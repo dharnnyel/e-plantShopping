@@ -48,6 +48,7 @@ function ProductList() {
 	};
 
 	const handleAddToCart = product => {
+		// console.log(product.plants);
 		dispatch(addItem(product));
 		setAddedToCart(prevState => ({
 			...prevState,
@@ -140,11 +141,11 @@ function ProductList() {
 			</div>
 			{!showCart ? (
 				<div className='product-grid'>
-					{plantsArray.map((plant, index) => (
+					{plantsArray.map((categories, index) => (
 						<div key={index}>
-							<h1>{plant.category}</h1>
+							<h1>{categories.category}</h1>
 							<div className='product-list'>
-								{plant.plants.map(
+								{categories.plants.map(
 									(currentPlant, currentIndex) => (
 										<div
 											className='product-card'
@@ -168,7 +169,7 @@ function ProductList() {
 											<button
 												className='product-button'
 												onClick={() =>
-													handleAddToCart(plant)
+													handleAddToCart(currentPlant)
 												}
 											>
 												Add to Cart
